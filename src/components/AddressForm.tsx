@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Plus } from 'lucide-react';
+import { FileText, Plus, AlertCircle } from 'lucide-react';
 import AddressFormInput from './AddressFormInput';
 import AddressList from './AddressList';
 import { Address } from '../types';
@@ -17,19 +17,44 @@ const initialAddress: Address = {
 
 export default function AddressForm() {
   const [addresses, setAddresses] = React.useState<Address[]>([initialAddress]);
+  const [duplicateWarnings, setDuplicateWarnings] = React.useState<string[]>([]);
+
+  const checkDuplicates = (currentIndex: number, address: Address) => {
+    const warnings: string[] = [];
+    
+    addresses.forEach((existingAddr, index) => {
+      if (index !== currentIndex) {
+        if (address.doctorName && address.doctorName === existingAddr.doctorName) {
+          warnings.push(`Doctor's name "${address.doctorName}" already exists`);
+        }
+        if (address.mobile && address.mobile === existingAddr.mobile) {
+          warnings.push(`Mobile number "${address.mobile}" already exists`);
+        }
+        if (address.hospitalClinic && address.hospitalClinic === existingAddr.hospitalClinic) {
+          warnings.push(`Hospital/Clinic "${address.hospitalClinic}" already exists`);
+        }
+      }
+    });
+    
+    return warnings;
+  };
 
   const addNewAddress = () => {
     setAddresses([...addresses, { ...initialAddress }]);
+    setDuplicateWarnings([]);
   };
 
   const removeAddress = (index: number) => {
     setAddresses(addresses.filter((_, i) => i !== index));
+    setDuplicateWarnings([]);
   };
 
   const updateAddress = (index: number, updatedAddress: Address) => {
-    setAddresses(
-      addresses.map((addr, i) => (i === index ? updatedAddress : addr))
-    );
+    const newAddresses = addresses.map((addr, i) => (i === index ? updatedAddress : addr));
+    setAddresses(newAddresses);
+    
+    const warnings = checkDuplicates(index, updatedAddress);
+    setDuplicateWarnings(warnings);
   };
 
   return (
@@ -45,6 +70,22 @@ export default function AddressForm() {
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Address Formatter</h1>
           <p className="text-lg text-gray-600">Generate professionally formatted addresses in one click</p>
         </div>
+
+        {duplicateWarnings.length > 0 && (
+          <div className="mb-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md">
+            <div className="flex items-start">
+              <AlertCircle className="h-5 w-5 text-yellow-400 mt-0.5 mr-2" />
+              <div>
+                <h3 className="text-sm font-medium text-yellow-800">Duplicate Entries Detected</h3>
+                <div className="mt-1">
+                  {duplicateWarnings.map((warning, index) => (
+                    <p key={index} className="text-sm text-yellow-700">{warning}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="space-y-6">
           {addresses.map((address, index) => (
