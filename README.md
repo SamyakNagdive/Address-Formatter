@@ -5,6 +5,9 @@
 
 Address-Formatter is a user-friendly tool designed to streamline the process of formatting addresses. It takes raw address data and transforms it into a standardized, professional format. This tool is especially useful for businesses, data entry professionals, and anyone who frequently works with addresses.
 
+![screenshot](https://raw.githubusercontent.com/SamyakNagdive/Address-Formatter/refs/heads/main/public/Screenshot.png)
+
+
 # Key Features
 
 Standardization: Ensures consistent address formatting across various data sources.
