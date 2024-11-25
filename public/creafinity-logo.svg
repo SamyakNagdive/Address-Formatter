@@ -1,0 +1,9 @@
+<content><?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" version="1.1" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+ <path d="m65 350c0 0 250-50 535 0 285 50 535 0 535 0" fill="none" stroke="#1e6f7c" stroke-width="30"/>
+ <path d="m100 250s10-20 40-20c30 0 60 20 60 50s-30 50-60 50c-30 0-40-20-40-20" fill="none" stroke="#1e6f7c" stroke-width="25"/>
+ <path d="m250 250s10-20 40-20 40 20 40 50-10 50-40 50-40-20-40-20m100-60s10-20 40-20 40 20 40 50-10 50-40 50-40-20-40-20" fill="none" stroke="#1e6f7c" stroke-width="25"/>
+ <path d="m500 250s10-20 40-20 40 20 40 50-10 50-40 50-40-20-40-20m100-60s10-20 40-20 40 20 40 50-10 50-40 50-40-20-40-20" fill="none" stroke="#1e6f7c" stroke-width="25"/>
+ <path d="m750 250s10-20 40-20 40 20 40 50-10 50-40 50-40-20-40-20m100-60s10-20 40-20 40 20 40 50-10 50-40 50-40-20-40-20" fill="none" stroke="#1e6f7c" stroke-width="25"/>
+ <path d="m1000 250s10-20 40-20c30 0 60 20 60 50s-30 50-60 50c-30 0-40-20-40-20" fill="none" stroke="#1e6f7c" stroke-width="25"/>
+</svg>
